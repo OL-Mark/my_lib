@@ -11,7 +11,7 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :authors, presence: true
   validates :publisher_id, presence: true
-  validates :isbn, presence: true, uniqueness: true, format: {
+  validates :isbn, allow_nil: true, uniqueness: true, format: {
     with: VALID_ISBN_REGEX,
     message: "must be a valid 10 or 13-digit ISBN (e.g., 123456789X or 9781234567897)"
   }
