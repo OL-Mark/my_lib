@@ -5,7 +5,7 @@ class CreateMainTables < ActiveRecord::Migration[7.2]
       t.string :isbn
       t.text :annotation
       t.bigint :cover_image_id
-      t.date :year
+      t.date :published_at
       t.string :lang
       t.string :original_lang
       t.integer :pages
