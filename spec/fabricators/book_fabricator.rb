@@ -1,9 +1,8 @@
 Fabricator :book do
-  title { Faker::Book.title }
-  author { Fabricate :author }
+  title { FFaker::Book.title }
+  authors { [ Fabricate(:author) ] }
   publisher { Fabricate :publisher }
-  translator { Fabricate :translator }
-  isbn { Faker::Code.isbn }
-  description { Faker::Lorem.paragraph }
-  price { Faker::Commerce.price }
+  translators { [ Fabricate(:translator) ] }
+  isbn { FFaker::Book.isbn }
+  annotation { FFaker::Book.description }
 end
