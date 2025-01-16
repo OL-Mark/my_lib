@@ -39,8 +39,9 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "fabrication", "~> 2.31"
   gem "ffaker", "~> 2.23"
+  gem "pry-byebug"
   gem "rubocop-rails-omakase", require: false
-  gem "rubocop", "~> 1.69"
+  gem "rubocop"
 end
 
 group :development do
