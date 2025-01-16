@@ -105,9 +105,7 @@ GEM
     diff-lcs (1.5.1)
     drb (2.2.1)
     erubi (1.13.1)
-    fabricator (0.0.5)
-      activesupport (>= 2.0.2)
-      rubigen (= 1.5.2)
+    fabrication (2.31.0)
     ffaker (2.23.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -245,8 +243,6 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.2)
-    rubigen (1.5.2)
-      activesupport (>= 2.2.2)
     rubocop (1.69.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -284,6 +280,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda-matchers (6.4.0)
+      activesupport (>= 5.2.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -345,7 +343,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails (~> 1.4)
   debug
-  fabricator (~> 0.0.5)
+  fabrication (~> 2.31)
   ffaker (~> 2.23)
   importmap-rails
   jbuilder
@@ -357,6 +355,7 @@ DEPENDENCIES
   rubocop (~> 1.69)
   rubocop-rails-omakase
   selenium-webdriver
+  shoulda-matchers (~> 6.0)
   sprockets-rails
   sqlite3 (>= 1.4)
   stimulus-rails

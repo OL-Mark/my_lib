@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 group :development, :test do
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-  gem "fabricator", "~> 0.0.5"
+  gem "fabrication", "~> 2.31"
   gem "ffaker", "~> 2.23"
   gem "rubocop-rails-omakase", require: false
   gem "rubocop", "~> 1.69"
@@ -49,6 +49,7 @@ group :development do
 end
 
 group :test do
+  gem "shoulda-matchers", "~> 6.0"
   gem "capybara"
   gem "rspec-rails", "~> 7.1"
   gem "rspec", "~> 3.13"
