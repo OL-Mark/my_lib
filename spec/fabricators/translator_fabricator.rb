@@ -1,4 +1,4 @@
 Fabricator :translator do
-  name { FFaker::Name.name }
-  description { FFaker::Lorem.paragraphs(2).join("\n") }
+  name { FFaker::Book.author }
+  description { FFaker::Book.description }
 end
