@@ -1,2 +1,3 @@
-class Author < ApplicationRecord
+class Author < Producer
+  has_many :books, foreign_key: :producer_id
 end
