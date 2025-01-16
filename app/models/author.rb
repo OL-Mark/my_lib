@@ -1,3 +1,3 @@
 class Author < Producer
-  has_many :books, foreign_key: :producer_id
+  has_many :books, through: :author_books
 end

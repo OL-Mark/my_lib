@@ -1,3 +1,3 @@
 class Translator < Producer
-  has_many :books, foreign_key: :translator_id
+  has_many :books, through: :translator_books
 end
