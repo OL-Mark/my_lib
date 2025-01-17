@@ -17,7 +17,6 @@ RSpec.describe "reviews/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", review_path(review), "post" do
-
       assert_select "textarea[name=?]", "review[body]"
 
       assert_select "input[name=?]", "review[rating]"

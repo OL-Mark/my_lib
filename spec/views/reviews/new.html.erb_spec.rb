@@ -13,7 +13,6 @@ RSpec.describe "reviews/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", reviews_path, "post" do
-
       assert_select "textarea[name=?]", "review[body]"
 
       assert_select "input[name=?]", "review[rating]"
