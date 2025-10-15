@@ -1,4 +1,10 @@
 <div id="<%= dom_id book %>">
+  <% if book.pictures.attached? %>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <%= image_tag book.pictures.first.variant(resize_to_limit: [100, 100]) %>
+    </div>
+  <% end %>
+
   <p>
     <strong>Title:</strong>
     <%= book.title %>
@@ -6,18 +12,11 @@
 
   <p>
     <strong>Authors:</strong>
-    <%= book.authors.map(&:name).join(", ") %>
+    <%= book.authors.pluck(:name).join(", ") %>
   </p>
 
   <p>
     <strong>ISBN:</strong>
     <%= book.isbn %>
   </p>
-  <% if book.pictures.attached? %>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-      <% if book.cover_attachment.present? %>
-        <%= image_tag book.cover_attachment.variant(resize_to_limit: [150, 150]), alt: "Cover" %>
-      <% end %>
-    </div>
-  <% end %>
 </div>
