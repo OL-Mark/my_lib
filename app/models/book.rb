@@ -9,32 +9,6 @@ class Book < ApplicationRecord
   # belongs_to :publisher
   has_many_attached :pictures
 
-  # Returns the ActiveStorage::Blob set as cover, if any
-  def cover_blob
-    return nil if cover_image_id.blank?
-    ActiveStorage::Blob.find_by(id: cover_image_id)
-  end
-
-  # Returns the attachment whose blob is the cover, if present
-  def cover_attachment
-    return nil if cover_image_id.blank?
-    pictures.attachments.find { |att| att.blob_id == cover_image_id }
-  end
-
-  # Set a specific attachment as the cover image
-  def set_cover!(attachment)
-    return unless attachment.is_a?(ActiveStorage::Attachment)
-    return unless pictures.attachments.map(&:id).include?(attachment.id)
-    update!(cover_image_id: attachment.blob_id)
-  end
-
-  # Clear cover if it references a removed blob
-  def clear_cover_if_missing!
-    return if cover_image_id.blank?
-    return if pictures.attachments.any? { |att| att.blob_id == cover_image_id }
-    update!(cover_image_id: nil)
-  end
-
   validates :title, presence: true
   # I decided to disable these validations so far to start populating the database with books faster
   # validates :authors, presence: true
