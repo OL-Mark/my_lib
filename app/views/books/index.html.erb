@@ -2,12 +2,8 @@
 
 <% content_for :title, "Books" %>
 
-<h1>Books</h1>
+<h1>All Books</h1>
 <div id="books-list-wrapper">
-  <hr/>
-  <div style="margin-bottom: 1rem; text-align: right;">
-    <%= link_to "Add a new book", new_book_path, class: "btn btn-primary" %>
-  </div>
   <hr/>
   <div style="margin-bottom: 0.5rem; display: inline-block;">
     <strong>Total books:</strong> <%= @books.count %>
