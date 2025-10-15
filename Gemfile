@@ -59,3 +59,7 @@ end
 
 gem "cssbundling-rails", "~> 1.4"
 gem "jsbundling-rails", "~> 1.3"
+
+# For Active Storage image variants
+gem "image_processing", "~> 1.12"
+gem "mini_magick"

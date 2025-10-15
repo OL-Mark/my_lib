@@ -8,3 +8,19 @@
 
   <%= button_to "Destroy this book", @book, method: :delete %>
 </div>
+
+<% if @book.pictures.attached? %>
+  <% if @book.cover_attachment.present? %>
+    <h2>Cover</h2>
+    <div style="margin-bottom: 12px;">
+      <%= image_tag @book.cover_attachment.variant(resize_to_limit: [400, 400]), alt: "Cover" %>
+    </div>
+  <% end %>
+  <h2>Pictures</h2>
+  <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+    <% @book.pictures.each do |picture| %>
+      <% next if @book.cover_attachment&.id == picture.id %>
+      <%= image_tag picture.variant(resize_to_limit: [300, 300]) %>
+    <% end %>
+  </div>
+<% end %>

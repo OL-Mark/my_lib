@@ -5,13 +5,19 @@
   </p>
 
   <p>
-    <strong>Desc:</strong>
-    <%= book.desc %>
+    <strong>Authors:</strong>
+    <%= book.authors.map(&:name).join(", ") %>
   </p>
 
   <p>
-    <strong>Rating:</strong>
-    <%= book.rating %>
+    <strong>ISBN:</strong>
+    <%= book.isbn %>
   </p>
-
+  <% if book.pictures.attached? %>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+      <% if book.cover_attachment.present? %>
+        <%= image_tag book.cover_attachment.variant(resize_to_limit: [150, 150]), alt: "Cover" %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

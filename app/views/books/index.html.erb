@@ -3,14 +3,22 @@
 <% content_for :title, "Books" %>
 
 <h1>Books</h1>
-
-<div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to "Show this book", book %>
-    </p>
-  <% end %>
+<div id="books-list-wrapper">
+  <hr/>
+  <div style="margin-bottom: 1rem; text-align: right;">
+    <%= link_to "Add a new book", new_book_path, class: "btn btn-primary" %>
+  </div>
+  <hr/>
+  <div style="margin-bottom: 0.5rem; display: inline-block;">
+    <strong>Total books:</strong> <%= @books.count %>
+  </div>
+  <hr/>
+  <div id="books">
+    <% @books.each do |book| %>
+      <%= render book %>
+      <p>
+        <%= link_to "Show this book", book %>
+      </p>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New book", new_book_path %>

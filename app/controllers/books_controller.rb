@@ -57,6 +57,29 @@ class BooksController < ApplicationController
     end
   end
 
+  # DELETE /books/:id/pictures/:attachment_id
+  def remove_picture
+    attachment = @book.pictures.attachments.find_by(id: params[:attachment_id])
+    if attachment
+      attachment.purge
+      @book.clear_cover_if_missing!
+      redirect_to edit_book_path(@book), notice: "Picture was removed."
+    else
+      redirect_to edit_book_path(@book), alert: "Picture not found."
+    end
+  end
+
+  # POST /books/:id/cover/:attachment_id
+  def set_cover
+    attachment = @book.pictures.attachments.find_by(id: params[:attachment_id])
+    if attachment
+      @book.set_cover!(attachment)
+      redirect_to edit_book_path(@book), notice: "Cover image updated."
+    else
+      redirect_to edit_book_path(@book), alert: "Picture not found."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
@@ -65,6 +88,10 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :desc, :rating)
+      params.require(:book).permit(
+        :title,
+        :isbn,
+        pictures: []
+      )
     end
 end

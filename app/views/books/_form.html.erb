@@ -17,14 +17,37 @@
   </div>
 
   <div>
-    <%= form.label :desc, style: "display: block" %>
-    <%= form.text_area :desc %>
+    <%= form.label :isbn, style: "display: block" %>
+    <%= form.text_field :isbn %>
   </div>
 
   <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
+    <%= form.label :pictures, "Book pictures", style: "display: block" %>
+    <%= form.file_field :pictures, multiple: true, direct_upload: true, accept: "image/*" %>
   </div>
+
+  <% if book.persisted? && book.pictures.attached? %>
+    <div style="margin-top: 1rem;">
+      <h3>Manage pictures</h3>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <% book.pictures.each do |picture| %>
+          <div style="border: 1px solid #ddd; padding: 6px;">
+            <div style="text-align: center; margin-bottom: 6px;">
+              <%= image_tag picture.variant(resize_to_limit: [150, 150]) %>
+            </div>
+            <div style="display: flex; gap: 8px; justify-content: center;">
+              <% if book.cover_attachment&.id == picture.id %>
+                <span style="font-weight: bold;">Cover</span>
+              <% else %>
+                <%= button_to "Set as cover", set_cover_book_path(book, attachment_id: picture.id), method: :post %>
+              <% end %>
+              <%= button_to "Remove", remove_picture_book_path(book, attachment_id: picture.id), method: :delete, form: { data: { turbo_confirm: "Remove this picture?" } } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit %>
