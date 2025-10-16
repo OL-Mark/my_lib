@@ -108,7 +108,7 @@ GEM
     drb (2.2.1)
     erubi (1.13.1)
     fabrication (2.31.0)
-    ffaker (2.23.0)
+    ffaker (2.25.0)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
     ffi (1.17.2-arm-linux-gnu)
@@ -370,7 +370,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.4)
   debug
   fabrication (~> 2.31)
-  ffaker (~> 2.23)
+  ffaker (~> 2.25)
   image_processing (~> 1.12)
   importmap-rails
   jbuilder
