@@ -38,7 +38,7 @@ group :development, :test do
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "fabrication", "~> 2.31"
-  gem "ffaker", "~> 2.23"
+  gem "ffaker", "~> 2.25"
   gem "pry-byebug"
   gem "rubocop-rails-omakase", require: false
   gem "rubocop"
